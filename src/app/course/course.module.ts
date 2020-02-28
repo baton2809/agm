@@ -4,6 +4,8 @@ import { CourseListComponent } from './components/section/course-list/course-lis
 import { CourseComponent } from './components/section/course-list/course/course.component';
 import { ToolbarComponent } from './components/section/toolbar/toolbar.component';
 import { SharedModule } from '../shared/shared.module';
+import { MoreComponent } from './components/section/course-list/more/more.component';
+import { SearchComponent } from './components/section/toolbar/search/search.component';
 
 
 
@@ -16,12 +18,15 @@ import { SharedModule } from '../shared/shared.module';
     CourseListComponent,
     CourseComponent,
     ToolbarComponent,
+    MoreComponent,
+    SearchComponent,
   ],
   exports: [
     SectionComponent,
     CourseListComponent,
     CourseComponent,
     ToolbarComponent,
+    MoreComponent,
   ]
 })
 export class CourseModule { }
