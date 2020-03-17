@@ -29,7 +29,8 @@ describe('Test as a class - CourseComponent', () => {
 describe('Use Stand Alone testing - CourseComponent', () => {
   let component: CourseComponent;
   let fixture: ComponentFixture<CourseComponent>;
-  const course = {id: 42, title: 'Test Name',  creationDate: 'today', duration: '2h', description: 'blah-bla-bla'};
+  const course = {id: 42, title: 'Test Name',  creationDate: new Date(2020, 5, 24),
+                  duration: 120, description: 'blah-bla-bla', topRated: false};
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -68,7 +69,8 @@ describe('Use Stand Alone testing - CourseComponent', () => {
   template: `<app-course [course] = "course" (deleteCourse)="onDelete($event)"></app-course>`
 })
 class TestHostComponent {
-  course: Course = {id: 42, title: 'Test Name',  creationDate: 'today', duration: '2h', description: 'blah-bla-bla'};
+  course: Course = {id: 42, title: 'Test Name',  creationDate: new Date(2020, 2, 17),
+                    duration: 120, description: 'blah-bla-bla', topRated: false};
   deletedCourseId: number;
   onDelete(courseId: number) { this.deletedCourseId = courseId; }
 }

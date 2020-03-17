@@ -1,10 +1,15 @@
-<div class="Rectangle">
+<div class="Rectangle" [appCoursePlateBorder]="course.creationDate" 
+                        [ngClass]="{'TopRated': course.topRated}">
     <div class="title">
-        <p>
-            <span class="Video-Course-1-Name">{{course.title}}</span>
+        <p> 
+            <span class="Video-Course-1-Name">{{course.title | uppercase}}</span>
+            <span id="topRated" *ngIf="course.topRated">
+                <i class="material-icons">star</i>
+            </span>
             <span class="label">
-                <span class="h-28-min">{{course.duration}}</span>
-                <span class="-Nov-2018">{{course.creationDate}}</span>
+                <span class="h-28-min">{{course.duration | timePretty }}</span>
+                <span class="h-28-min"> - </span>
+                <span class="-Nov-2018">{{course.creationDate | date:'dd MMMM yyyy'}}</span>
             </span>
         </p>
     </div>
