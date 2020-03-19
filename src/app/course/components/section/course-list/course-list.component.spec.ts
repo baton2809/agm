@@ -22,4 +22,8 @@ describe('CourseListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should listing courses', () => {
+    expect(component.courses.length > 0).toBeTrue();
+  });
 });

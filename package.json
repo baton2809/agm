@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng lint && ng serve -o",
+    "start": "ng serve -o",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --code-coverage --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

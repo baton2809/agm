@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges,
-  AfterViewChecked, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit } from '@angular/core';
+  AfterViewChecked, OnChanges, AfterContentInit, AfterContentChecked, AfterViewInit } from '@angular/core';
 import { Course } from 'src/app/course/models/course';
 
 @Component({
