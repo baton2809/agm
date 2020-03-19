@@ -1,0 +1,20 @@
+<div class="Rectangle">
+    <div class="title">
+        <p>
+            <span class="Video-Course-1-Name">{{course.title}}</span>
+            <span class="label">
+                <span class="h-28-min">{{course.duration}}</span>
+                <span class="-Nov-2018">{{course.creationDate}}</span>
+            </span>
+        </p>
+    </div>
+    <div class="description">
+        <div class="Learn-about-where-yo">
+            {{course.description}}
+        </div>
+        <div class="control">
+            <button class="Mask">Edit</button>
+            <button class="Mask" (click)="onDeleteCourse()">Delete</button>
+        </div>
+    </div>
+</div>
