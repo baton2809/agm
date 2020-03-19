@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
+  @Input() filter: string;
+  @Output() searchCourses = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onFindCourses(text2search: string) {
+    console.log('>> ' + text2search);
+    this.searchCourses.emit(text2search);
   }
 
 }

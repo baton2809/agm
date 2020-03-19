@@ -7,15 +7,7 @@ import { Course } from 'src/app/course/models/course';
 export class OrderByPipe implements PipeTransform {
 
   transform(args: Course[]): Course[] {
-    args.sort((a: Course, b: Course) => {
-      if (a.creationDate < b.creationDate) {
-        return 1;
-      } else if (a.creationDate > b.creationDate) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
+    args.sort((a, b) => a.creationDate < b.creationDate ? 1 : -1);
     return args;
   }
 

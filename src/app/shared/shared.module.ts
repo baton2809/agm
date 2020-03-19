@@ -9,6 +9,7 @@ import { FakeLogoComponent } from './components/header/fake-logo/fake-logo.compo
 import { CoursePlateBorderDirective } from './directives/course-plate-border.directive';
 import { TimePrettyPipe } from './pipes/time-pretty.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 
 
@@ -26,6 +27,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
     CoursePlateBorderDirective,
     TimePrettyPipe,
     OrderByPipe,
+    SearchPipe,
   ],
   exports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
     CoursePlateBorderDirective,
     TimePrettyPipe,
     OrderByPipe,
+    SearchPipe,
   ]
 })
 export class SharedModule { }

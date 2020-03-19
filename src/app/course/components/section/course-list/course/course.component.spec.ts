@@ -4,6 +4,7 @@ import { CourseComponent } from './course.component';
 import { Course } from 'src/app/course/models/course';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { TimePrettyPipe } from 'src/app/shared/pipes/time-pretty.pipe';
 
 // Test as a class
 
@@ -34,7 +35,7 @@ describe('Use Stand Alone testing - CourseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseComponent ]
+      declarations: [ CourseComponent, TimePrettyPipe ]
     })
     .compileComponents();
   }));
@@ -81,7 +82,7 @@ describe('Test host testing - CourseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseComponent, TestHostComponent  ]
+      declarations: [ CourseComponent, TestHostComponent, TimePrettyPipe ]
     })
     .compileComponents();
   }));
