@@ -5,7 +5,7 @@ export interface User {
 }
 
 export class Student implements User {
-    id: number;   
+    id: number;
     firstName: string;
     lastName: string;
 
