@@ -1,2 +1,2 @@
-<app-toolbar></app-toolbar>
-<app-course-list></app-course-list>
+<app-toolbar (searchCourses)="onSearchCourses($event)"></app-toolbar>
+<app-course-list [filter]="text2search"></app-course-list>
