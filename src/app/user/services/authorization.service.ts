@@ -7,10 +7,14 @@ import { User, Student } from '../models/user';
 export class AuthorizationService {
 
   constructor() {
-    this.login(new Student(123, 'Petrov', 'Petr'));
   }
 
   login(user: User | null | undefined) {
+    if (user != null) {
+      user.id = 1234;
+      user.lastName = 'Ivanoff';
+      user.firstName = 'Ivan';
+    }
     localStorage.setItem('user', JSON.stringify(user));
   }
 
