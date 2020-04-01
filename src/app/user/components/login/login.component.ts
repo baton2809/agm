@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthorizationService } from '../../services/authorization.service';
-import { Student } from '../../models/user';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +8,8 @@ import { Student } from '../../models/user';
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
+
+  @Output() loginEmitter = new EventEmitter();
 
   public email = '';
   public password = '';
@@ -18,9 +20,8 @@ export class LoginComponent implements OnInit {
   }
 
   Login() {
-    const user = new Student(-1, '', '', this.email, this.password);
-
-    this.authorizationService.login(user);
+    this.authorizationService.login(this.email, this.password);
+    this.loginEmitter.emit();
     console.log('logged in successfully');
   }
 }

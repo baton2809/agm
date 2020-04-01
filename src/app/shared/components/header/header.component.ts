@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthorizationService } from 'src/app/user/services/authorization.service';
 
 @Component({
@@ -8,14 +8,16 @@ import { AuthorizationService } from 'src/app/user/services/authorization.servic
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() logoutEmitter = new EventEmitter();
+
   constructor(public authService: AuthorizationService) { }
 
   ngOnInit(): void {
   }
 
   logout() {
-    console.log('logout');
+    this.logoutEmitter.emit();
     this.authService.logout();
+    console.log('logout');
   }
-
 }

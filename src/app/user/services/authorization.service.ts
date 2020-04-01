@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, Student } from '../models/user';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +9,12 @@ export class AuthorizationService {
   constructor() {
   }
 
-  login(user: User | null | undefined) {
-    if (user != null) {
-      user.id = 1234;
-      user.lastName = 'Ivanoff';
-      user.firstName = 'Ivan';
-    }
+  login(mail: string, password: string) {
+    const user = {
+      id : 1234,
+      firstName : 'Ivan',
+      lastName : 'Ivanoff'
+    } as User;
     localStorage.setItem('user', JSON.stringify(user));
   }
 
