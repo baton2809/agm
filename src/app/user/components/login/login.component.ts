@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthorizationService } from '../../services/authorization.service';
-import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
