@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthorizationService } from 'src/app/user/services/authorization.service';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreadcrumbsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthorizationService) { }
 
   ngOnInit(): void {
   }

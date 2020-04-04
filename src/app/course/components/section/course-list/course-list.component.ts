@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import { AngularCourse, Course } from 'src/app/course/models/course';
 import { SearchPipe } from 'src/app/shared/pipes/search.pipe';
+import { CourseService } from 'src/app/course/services/course.service';
 
 @Component({
   selector: 'app-course-list',
@@ -15,49 +16,17 @@ export class CourseListComponent implements OnInit, OnChanges,
 
   courses: Course[] = [];
   search: SearchPipe = new SearchPipe();
+  id2delete: number;
 
   @Input() filter: string;
 
-  constructor() {
+  constructor(private courseService: CourseService ) {
     console.log('Root constructor call');
   }
 
   ngOnInit(): void {
     console.log('Root OnInit call');
-    this.courses = this.fetchAllCourses();
-  }
-
-  fetchAllCourses(): Course[] {
-    return [
-      new AngularCourse(444, 'Video Course 1. Name tag', new Date(2020, 5, 24), 18,
-        `Learn about where you can find course descriptions, what information they include,
-      how they work, and details about various components of a course description.
-        Course descriptions report information about a university or college's classes.
-        They're published both in course catalogs that outline degree requirements
-          and in course schedules that contain descriptions for all courses
-          offered during a particular semester.`, false),
-      new AngularCourse(123, 'Video Course 2.', new Date(2020, 2, 1), 146,
-        `Learn about where you can find course descriptions, what information they include,
-      how they work, and details about various components of a course description.
-        Course descriptions report information about a university or college's classes.
-        They're published both in course catalogs that outline degree requirements
-          and in course schedules that contain descriptions for all courses
-          offered during a particular semester.`, true),
-      new AngularCourse(444, 'Video Course 1. Name tag', new Date(2020, 2, 17), 78,
-        `Learn about where you can find course descriptions, what information they include,
-      how they work, and details about various components of a course description.
-        Course descriptions report information about a university or college's classes.
-        They're published both in course catalogs that outline degree requirements
-          and in course schedules that contain descriptions for all courses
-          offered during a particular semester.`, false),
-      new AngularCourse(222, 'Video Course 3.', new Date(2018, 11, 8), 87,
-        `Learn about where you can find course descriptions, what information they include,
-      how they work, and details about various components of a course description.
-        Course descriptions report information about a university or college's classes.
-        They're published both in course catalogs that outline degree requirements
-          and in course schedules that contain descriptions for all courses
-          offered during a particular semester.`, false),
-    ];
+    this.courses = this.courseService.getCourses();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -65,7 +34,7 @@ export class CourseListComponent implements OnInit, OnChanges,
     console.log('Root OnChanges call: ', changes);
     console.log('filter ' + this.filter);
 
-    this.courses = this.search.transform(this.filter, this.fetchAllCourses());
+    this.courses = this.search.transform(this.filter, this.courseService.getCourses());
   }
 
   // ngDoCheck() {
@@ -88,8 +57,22 @@ export class CourseListComponent implements OnInit, OnChanges,
     console.log('-> afterViewChecked event');
   }
 
-  onDelete(id: any) {
+  onDelete(id: number) {
+    this.id2delete = id;
     console.log(id);
+    const popup = document.querySelector('#xmas-popup') as HTMLElement;
+    popup.style.display = 'block';
   }
 
+  onClose() {
+    console.log('Popup is closed');
+    const popup = document.querySelector('#xmas-popup') as HTMLElement;
+    popup.style.display = 'none';
+  }
+
+  onConfirm(id: number) {
+    console.log('Course ' + id + ' is deleted');
+    this.courseService.removeCourse(id);
+    this.onClose();
+  }
 }

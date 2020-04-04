@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="content">
+    <div class="bg">
+        <p class="Login">Login</p>
+        <div class="row">
+            <div class="Tag-it-component">E-mail:</div>
+            <div class="required">*required</div>
+        </div>
+        <input type="text" id="email" [(ngModel)]="email" placeholder="Enter e-mail">
+        <div class="row">
+            <div class="Tag-it-component">Password:</div>
+            <div class="required">*required</div>
+        </div>
+        <input type="text" id="password" [(ngModel)]="password" placeholder="Enter password">
+        <div class="row">
+            <div class="Forgot-password">Forgot password?</div>
+            <button class="Save" type="button" (click)="Login()">Login</button>
+        </div>
+    </div>
+</div>
