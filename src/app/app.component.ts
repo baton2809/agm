@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'agm';
-  isAutenticated = true; // change to false
+  isAutenticated = false;
 
   authenticate() {
     this.isAutenticated = true;

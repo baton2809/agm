@@ -5,30 +5,30 @@
             <div class="Tag-it-component">Title</div>
             <div class="required">*required</div>
         </div>
-        <input type="text" class="input-title" placeholder="Text-input">
+        <input type="text" class="input-title" [(ngModel)]="title" placeholder="Text-input">
         <div class="row">
             <div class="Tag-it-component">Description</div>
             <div class="required">*required</div>
         </div>
-        <input type="text" class="input-description" placeholder="Add description">
+        <input type="text" class="input-description" [(ngModel)]="description" placeholder="Add description">
         <div class="row-duration">
             <div class="Tag-it-component">Duration</div>
             <div class="required">*required</div>
         </div>
-        <input type="text" class="input-duration" placeholder="minutes">
+        <input type="text" class="input-duration" [(ngModel)]="duration" placeholder="minutes">
         <div class="row-duration">
             <div class="Tag-it-component">Date</div>
             <div class="required">*required</div>
         </div>
-        <input type="text" class="input-duration" placeholder="dd/MM/yyyy">
+        <input type="text" class="input-duration" [(ngModel)]="date" placeholder="dd/MM/yyyy">
         <div class="row-author">
             <div class="Tag-it-component">Authors</div>
             <div class="required">*required</div>
         </div>
-        <input type="text" class="input-author" placeholder="Start typing">
+        <input type="text" class="input-author" [(ngModel)]="authors" placeholder="Start typing">
         <div class="row">
-            <button class="Cancel" type="button">Cancel</button>
-            <button class="Save" type="button">Save</button>
+            <button class="Cancel" type="button" (click)="Cancel()">Cancel</button>
+            <button class="Save" type="button" (click)="Add()">Save</button>
         </div>
     </div>
 </div>
