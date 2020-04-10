@@ -6,12 +6,14 @@ import { ToolbarComponent } from './components/section/toolbar/toolbar.component
 import { SharedModule } from '../shared/shared.module';
 import { MoreComponent } from './components/section/course-list/more/more.component';
 import { SearchComponent } from './components/section/toolbar/search/search.component';
-
+import { AddCourseComponent } from './components/section/add-course/add-course.component';
+import { UserModule } from '../user/user.module';
 
 
 @NgModule({
   imports: [
-    SharedModule
+    SharedModule,
+    UserModule,
   ],
   declarations: [
     SectionComponent,
@@ -20,6 +22,7 @@ import { SearchComponent } from './components/section/toolbar/search/search.comp
     ToolbarComponent,
     MoreComponent,
     SearchComponent,
+    AddCourseComponent,
   ],
   exports: [
     SectionComponent,

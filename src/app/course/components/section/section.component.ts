@@ -10,7 +10,8 @@ export class SectionComponent implements OnInit {
 
   public text2search: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -19,5 +20,4 @@ export class SectionComponent implements OnInit {
     console.log('>>> ' + text2search);
     this.text2search = text2search;
   }
-
 }
