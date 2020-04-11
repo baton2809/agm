@@ -22,7 +22,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   addCourse() {
-    this.router.navigate(['add']);
+    this.router.navigate(['new']);
   }
 
 }

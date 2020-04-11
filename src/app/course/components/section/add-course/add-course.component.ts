@@ -36,11 +36,11 @@ export class AddCourseComponent implements OnInit {
     } as Course;
     this.courseService.createCourse(course);
     this.counterId += 1;
-    this.router.navigate(['']);
+    this.router.navigate(['courses']);
     console.log('New Course is added!');
   }
 
   Cancel() {
-    this.router.navigate(['']);
+    this.router.navigate(['courses']);
   }
 }

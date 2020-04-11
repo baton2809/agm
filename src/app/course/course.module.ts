@@ -8,6 +8,7 @@ import { MoreComponent } from './components/section/course-list/more/more.compon
 import { SearchComponent } from './components/section/toolbar/search/search.component';
 import { AddCourseComponent } from './components/section/add-course/add-course.component';
 import { UserModule } from '../user/user.module';
+import { UpdateCourseComponent } from './components/section/update-course/update-course.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { UserModule } from '../user/user.module';
     MoreComponent,
     SearchComponent,
     AddCourseComponent,
+    UpdateCourseComponent,
   ],
   exports: [
     SectionComponent,
