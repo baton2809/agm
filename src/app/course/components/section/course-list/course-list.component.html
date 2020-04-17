@@ -6,3 +6,10 @@
 </div>
 
 <div *ngIf="courses.length === 0"><p>NO DATA. FEEL FREE TO ADD NEW COURSE</p></div>
+
+<div id="xmas-popup" class="popup">
+    <div class="popup-content">
+        <app-popup [id2delete]="id2delete" (closes)="onClose()" (confirm)="onConfirm($event)">
+        </app-popup>
+    </div>
+</div>
