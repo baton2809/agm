@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,7 +11,7 @@ export class ToolbarComponent implements OnInit {
   @Input() filter: string;
   @Output() searchCourses = new EventEmitter();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,6 +19,10 @@ export class ToolbarComponent implements OnInit {
   onFindCourses(text2search: string) {
     console.log('>> ' + text2search);
     this.searchCourses.emit(text2search);
+  }
+
+  addCourse() {
+    this.router.navigate(['add']);
   }
 
 }

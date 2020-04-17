@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { CourseModule } from './course/course.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CourseModule } from './course/course.module';
     BrowserModule,
     SharedModule,
     UserModule,
-    CourseModule
+    CourseModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

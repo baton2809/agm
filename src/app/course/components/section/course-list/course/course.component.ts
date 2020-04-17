@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges,
-  AfterViewChecked, OnChanges, AfterContentInit, AfterContentChecked, AfterViewInit } from '@angular/core';
+  AfterViewChecked, OnChanges, AfterContentInit, AfterContentChecked, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { Course } from 'src/app/course/models/course';
 
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
-  styleUrls: ['./course.component.sass']
+  styleUrls: ['./course.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourseComponent implements OnInit, OnChanges,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
