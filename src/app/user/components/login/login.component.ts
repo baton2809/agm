@@ -19,6 +19,14 @@ export class LoginComponent implements OnInit {
   }
 
   Login() {
+
+    const request = {
+      "login": this.email,
+      "password": this.password
+    };
+
+    // TODO add API call
+
     this.authorizationService.login(this.email, this.password);
     this.loginEmitter.emit();
     console.log('logged in successfully');

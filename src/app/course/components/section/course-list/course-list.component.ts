@@ -33,7 +33,6 @@ export class CourseListComponent implements OnInit, OnChanges,
     // Doesn't invoke due to context doesn't provide a [value] input binding
     console.log('Root OnChanges call: ', changes);
     console.log('filter ' + this.filter);
-
     this.courses = this.search.transform(this.filter, this.courseService.getCourses());
   }
 

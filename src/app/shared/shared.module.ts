@@ -11,13 +11,14 @@ import { TimePrettyPipe } from './pipes/time-pretty.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   declarations: [
     BreadcrumbsComponent,
@@ -34,6 +35,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   exports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
     BreadcrumbsComponent,
     FooterComponent,
     HeaderComponent,
@@ -43,6 +45,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     TimePrettyPipe,
     OrderByPipe,
     SearchPipe,
+    NotFoundComponent,
   ]
 })
 export class SharedModule { }

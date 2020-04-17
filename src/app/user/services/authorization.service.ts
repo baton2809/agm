@@ -26,7 +26,7 @@ export class AuthorizationService {
   }
 
   isAuthenticated() {
-    console.log('~> {}', localStorage.getItem('user') != null);
+    console.log('~> user is authenticated - ', localStorage.getItem('user') != null);
     return localStorage.getItem('user') != null;
   }
 
