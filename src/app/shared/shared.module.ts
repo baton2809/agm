@@ -13,11 +13,10 @@ import { SearchPipe } from './pipes/search.pipe';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
-
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
     BreadcrumbsComponent,

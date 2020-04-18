@@ -2,7 +2,7 @@ import {
   Component, OnInit, OnChanges, SimpleChanges,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, Input
 } from '@angular/core';
-import { AngularCourse, Course } from 'src/app/course/models/course';
+import { Course } from 'src/app/course/models/course';
 import { SearchPipe } from 'src/app/shared/pipes/search.pipe';
 import { CourseService } from 'src/app/course/services/course.service';
 

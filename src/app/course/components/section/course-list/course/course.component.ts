@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges,
   AfterViewChecked, OnChanges, AfterContentInit, AfterContentChecked, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { Course } from 'src/app/course/models/course';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { CourseService } from 'src/app/course/services/course.service';
 
 @Component({
