@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CourseComponent } from '../course/course.component';
+import { CourseService } from 'src/app/course/services/course.service';
 
 @Component({
   selector: 'app-more',
@@ -8,7 +8,7 @@ import { CourseComponent } from '../course/course.component';
 })
 export class MoreComponent implements OnInit {
 
-  constructor() {
+  constructor(private courseService: CourseService) {
   }
 
   ngOnInit(): void {

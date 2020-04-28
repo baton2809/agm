@@ -10,27 +10,32 @@ export class AuthorizationService {
   constructor(private router: Router) {
   }
 
-  login(mail: string, password: string) {
-    const user = {
-      id : 1234,
-      firstName : 'Ivan',
-      lastName : 'Ivanoff'
-    } as User;
-    localStorage.setItem('user', JSON.stringify(user));
-    this.router.navigate(['courses']);
+  // login(mail: string, password: string) {
+  //   const user = {
+  //     id : 1234,
+  //     firstName : 'Ivan',
+  //     lastName : 'Ivanoff'
+  //   } as User;
+  //   localStorage.setItem('user', JSON.stringify(user));
+  //   this.router.navigate(['courses']);
+  // }
+
+  login(token: object) {
+    localStorage.setItem('fakeToken', JSON.stringify(token));
+    // this.router.navigate(['courses']);
   }
 
   logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('fakeToken');
     this.router.navigate(['login']);
   }
 
   isAuthenticated() {
-    console.log('~> user is authenticated - ', localStorage.getItem('user') != null);
-    return localStorage.getItem('user') != null;
+    console.log('~> user is authenticated - ', localStorage.getItem('fakeToken') != null);
+    return localStorage.getItem('fakeToken') != null;
   }
 
   getUserInfo() {
-    return JSON.parse(localStorage.getItem('user'));
+    return JSON.parse(localStorage.getItem('fakeToken'));
   }
 }

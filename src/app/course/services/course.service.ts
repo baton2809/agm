@@ -38,20 +38,37 @@ export class CourseService {
   //       offered during a particular semester.`, false),
   // ];
 
-  courses: Course[]
+  courses: Course[];
 
   constructor(private httpClient: HttpClient) { }
+
+  wrapCorrectDate(courses: Course[]) {
+    courses.forEach((course) => {
+      course.creationDate = new Date(course.creationDate);
+    });
+    return courses;
+  }
+
+  getCoursesPage(start: string, count: string) {
+    console.log('<<<<<');
+    this.httpClient.get<Course[]>('http://localhost:3004/courses/', {params: {start, count}})
+    .subscribe((courses) => {
+      if (this.courses) {
+        this.courses = this.courses.concat(this.wrapCorrectDate(courses));
+      } else {
+        this.courses = this.wrapCorrectDate(courses);
+      }
+      return this.courses;
+    });
+  }
 
   getCourses(): Course[] {
     if (this.courses) {
       console.log('>>>>>');
-      return this.courses;
+    } else {
+      console.log('<<<<<');
+      this.getCoursesPage('0', '10');
     }
-    console.log('<<<<<');
-    this.httpClient.get<Course[]>('http://localhost:3000/courses/')
-    .subscribe((courses) => {
-      this.courses = courses;
-    });
     return this.courses;
   }
 
@@ -64,8 +81,9 @@ export class CourseService {
       description: course.description,
       topRated: course.topRated,
     } as Course;
-    this.httpClient.post<Course>('http://localhost:3000/courses/', newCourse)
-    .subscribe((course) => console.log('create new Course with id #' + course.id), err => console.log(err))
+    this.httpClient.post<Course>('http://localhost:3004/courses/', newCourse)
+    .subscribe((res) => console.log('create new Course with id #' + res.id),
+    (err) => console.log(err));
     this.courses.push(newCourse);
   }
 
@@ -73,9 +91,9 @@ export class CourseService {
     return this.courses.find(course => course.id === id);
   }
 
-  getFirstNCourses(start: number, count: number) {
-    this.httpClient.get<Course[]>('http://localhost:3000/courses/',
-    {params: {start: '0', count:'1'}})
+  getFirstNCourses(count: string) {
+    this.httpClient.get<Course[]>('http://localhost:3004/courses/',
+    {params: {start: '0', count}})
     .subscribe((courses) => {
       this.courses = courses;
     });
@@ -88,9 +106,9 @@ export class CourseService {
   }
 
   removeCourse(id: number) {
-    this.httpClient.delete<void>(`http://localhost:3000/courses/${id}`)
+    this.httpClient.delete<void>(`http://localhost:3004/courses/${id}`)
     .subscribe(() => console.log('Course with id #' + id + ' is deleted.'),
-    (error) => {console.log(error)});
+    (err) => console.log(err));
 
     const i = this.courses.findIndex(value => value.id === id);
     this.courses.splice(i, 1);

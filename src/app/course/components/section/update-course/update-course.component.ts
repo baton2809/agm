@@ -43,7 +43,7 @@ export class UpdateCourseComponent implements OnInit {
       description: this.description,
       topRated: false,
     } as Course;
-    this.courseService.createCourse(course);
+    this.courseService.updateCourse(course);
     this.router.navigate(['courses']);
     console.log('Course is updated!');
   }
