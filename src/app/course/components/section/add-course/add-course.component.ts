@@ -21,8 +21,8 @@ export class AddCourseComponent implements OnInit {
   constructor(private courseService: CourseService,
               private router: Router) { }
 
-  ngOnInit(): void {
-    this.counterId = this.courseService.getCourses().length + 1;
+  async ngOnInit(): Promise<void> {
+    this.counterId = (await this.courseService.getCourses()).length + 1;
   }
 
   Add() {

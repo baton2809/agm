@@ -39,7 +39,13 @@ export class LoginComponent implements OnInit {
             if (this.authorizationService.isAuthenticated) {
               this.router.navigate(['courses']);
             }
-          }, err => console.log(err));
+          }, err => {
+            console.log(err);
+            alert(err['error']);
+          });
+      }, err => {
+        console.log(err);
+        alert(err['error']);
       });
 
     // this.authorizationService.login(this.email, this.password);

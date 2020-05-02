@@ -1,6 +1,6 @@
 import {
   Component, OnInit, OnChanges, SimpleChanges,
-  AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, Input
+  AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, Input, ChangeDetectorRef
 } from '@angular/core';
 import { Course } from 'src/app/course/models/course';
 import { SearchPipe } from 'src/app/shared/pipes/search.pipe';
@@ -15,25 +15,24 @@ export class CourseListComponent implements OnInit, OnChanges,
   AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
 
   courses: Course[] = [];
-  search: SearchPipe = new SearchPipe();
+  // search: SearchPipe = new SearchPipe();
   id2delete: number;
+  searchData: string;
 
   @Input() filter: string;
 
-  constructor(private courseService: CourseService ) {
+  constructor(private courseService: CourseService) {
     console.log('Root constructor call');
   }
 
   ngOnInit(): void {
     console.log('Root OnInit call');
-    this.courses = this.courseService.getCourses();
+    this.courseService.getCourses().then(courses => this.courses = courses);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     // Doesn't invoke due to context doesn't provide a [value] input binding
     console.log('Root OnChanges call: ', changes);
-    console.log('filter ' + this.filter);
-    this.courses = this.search.transform(this.filter, this.courseService.getCourses());
   }
 
   // ngDoCheck() {
@@ -56,6 +55,10 @@ export class CourseListComponent implements OnInit, OnChanges,
     console.log('-> afterViewChecked event');
   }
 
+  updateCoursesList() {
+    this.courseService.getCourses().then(courses => this.courses = courses);
+  }
+
   onDelete(id: number) {
     this.id2delete = id;
     console.log(id);
@@ -73,5 +76,11 @@ export class CourseListComponent implements OnInit, OnChanges,
     console.log('Course ' + id + ' is deleted');
     this.courseService.removeCourse(id);
     this.onClose();
+  }
+
+  onSearchCourses(textFragment: string) {
+    if (textFragment) {
+      this.courseService.getCoursesByFragment(textFragment);
+    }
   }
 }

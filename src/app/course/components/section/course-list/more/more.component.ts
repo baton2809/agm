@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { CourseService } from 'src/app/course/services/course.service';
 
 @Component({
@@ -8,13 +8,19 @@ import { CourseService } from 'src/app/course/services/course.service';
 })
 export class MoreComponent implements OnInit {
 
+  @Input() numberOfCoursesOnPage: number;
+  @Output() updateCoursesList = new EventEmitter();
+
   constructor(private courseService: CourseService) {
   }
 
   ngOnInit(): void {
   }
 
-  onLoadMore(): void {
+  async onLoadMore(): Promise<void> {
     console.log('Load more');
+    await this.courseService.getCoursesPage(this.numberOfCoursesOnPage.toString(), '5');
+    console.log(this.numberOfCoursesOnPage.toString());
+    this.updateCoursesList.emit();
   }
 }

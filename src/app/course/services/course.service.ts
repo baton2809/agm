@@ -49,25 +49,33 @@ export class CourseService {
     return courses;
   }
 
-  getCoursesPage(start: string, count: string) {
+  async getCoursesPage(start: string, count: string) {
     console.log('<<<<<');
-    this.httpClient.get<Course[]>('http://localhost:3004/courses/', {params: {start, count}})
-    .subscribe((courses) => {
-      if (this.courses) {
-        this.courses = this.courses.concat(this.wrapCorrectDate(courses));
-      } else {
-        this.courses = this.wrapCorrectDate(courses);
-      }
-      return this.courses;
-    });
+    const tempCourses = await this.httpClient.get<Course[]>('http://localhost:3004/courses/', {params: {start, count}}).toPromise();
+    if (this.courses) {
+      this.courses = this.courses.concat(this.wrapCorrectDate(tempCourses));
+    } else {
+      this.courses = this.wrapCorrectDate(tempCourses);
+    }
+    return tempCourses;
   }
 
-  getCourses(): Course[] {
+  async getCoursesByFragment(textFragment: string) {
+    console.log(textFragment);
+    if (textFragment) {
+      this.httpClient.get<Course[]>('http://localhost:3004/courses', {params: {start: '0', count: '20', textFragment}})
+      .subscribe((res) => console.log('search by filter: ', res.length),
+      (err) => console.log(err));
+      // server return 500. i don't know why he types TypeError: Cannot read property 'indexOf' of undefined, also for 'concat'....
+    }
+  }
+
+  async getCourses(startIndex?: string): Promise<Course[]> {
     if (this.courses) {
       console.log('>>>>>');
     } else {
       console.log('<<<<<');
-      this.getCoursesPage('0', '10');
+      await this.getCoursesPage(startIndex ? startIndex : '0', '10');
     }
     return this.courses;
   }
