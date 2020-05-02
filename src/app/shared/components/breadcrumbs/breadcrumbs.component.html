@@ -1,3 +1,3 @@
 <div *ngIf="authService.isAuthenticated()">
-    <p class="Courses">Courses</p>
+    <a class="Courses" (click)="goHome()">{{breadcrumb}}</a>
 </div>

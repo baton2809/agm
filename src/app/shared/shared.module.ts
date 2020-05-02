@@ -10,13 +10,13 @@ import { CoursePlateBorderDirective } from './directives/course-plate-border.dir
 import { TimePrettyPipe } from './pipes/time-pretty.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { SearchPipe } from './pipes/search.pipe';
-
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
     BreadcrumbsComponent,
@@ -28,6 +28,7 @@ import { SearchPipe } from './pipes/search.pipe';
     TimePrettyPipe,
     OrderByPipe,
     SearchPipe,
+    NotFoundComponent,
   ],
   exports: [
     CommonModule,

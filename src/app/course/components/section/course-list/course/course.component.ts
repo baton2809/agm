@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges,
   AfterViewChecked, OnChanges, AfterContentInit, AfterContentChecked, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { Course } from 'src/app/course/models/course';
+import { Router } from '@angular/router';
+import { CourseService } from 'src/app/course/services/course.service';
 
 @Component({
   selector: 'app-course',
@@ -14,11 +16,16 @@ export class CourseComponent implements OnInit, OnChanges,
   @Input() course: Course;
   @Output() deleteCourse = new EventEmitter();
 
-  constructor() {
+  constructor(private router: Router, private service: CourseService) {
     console.log('Child constructor');
   }
 
   ngOnInit(): void {
+    // if (this.course.id == undefined) {
+    //   const id = +this.route.snapshot.paramMap.get('id');
+    //   this.course = this.service.getCourseById(id)
+    // }
+
     console.log('Child onInit');
   }
 
@@ -49,6 +56,11 @@ export class CourseComponent implements OnInit, OnChanges,
 
   onDeleteCourse() {
     this.deleteCourse.emit(this.course.id);
+  }
+
+  editCourse() {
+    console.log('navigate to edit course #' + this.course.id);
+    this.router.navigate(['courses', this.course.id]);
   }
 
 }
