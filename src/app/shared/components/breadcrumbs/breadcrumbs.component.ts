@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class BreadcrumbsComponent implements OnInit {
 
-  private breadcrumb: string;
+  public breadcrumb: string;
   private rootPath: string;
   private id: string;
 

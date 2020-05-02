@@ -3,7 +3,7 @@
     <div class="login-container">
         <p class="User-login">User login</p>
         <div *ngIf="authService.isAuthenticated()">
-            <p class="Log-off" (click)="logout()">Log off</p>
+            <p class="Log-off" style="cursor:pointer" (click)="logout()">Log off</p>
         </div>
     </div>
 </div>
