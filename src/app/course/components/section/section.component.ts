@@ -16,8 +16,8 @@ export class SectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSearchCourses(text2search: string): void {
-    console.log('>>> ' + text2search);
-    this.text2search = text2search;
-  }
+  // onSearchCourses(text2search: string): void {
+  //   console.log('>>> ' + text2search);
+  //   this.text2search = text2search;
+  // }
 }

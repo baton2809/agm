@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "roy",
+      "lastName": "india"
+    },
+    {
+      "id": 2,
+      "firstName": "sam",
+      "lastName": "wales"
+    },
+    {
+      "id": 3,
+      "firstName": "Ivan",
+      "lastName": "Ivanoff"
+    }
+  ],
+  "courses": [
+    {
+      "id": 444,
+      "title": "Video Course 1. Name tag",
+      "creationDate": 1593012634,
+      "duration": 18,
+      "description": "Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college's classes. They're published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.",
+      "topRated": false
+    },
+    {
+      "id": 123,
+      "title": "Video Course 2. Name tag",
+      "creationDate": 1580571034,
+      "duration": 146,
+      "description": "Learn abs about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college's classes. They're published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.",
+      "topRated": true
+    },
+    {
+      "id": 421,
+      "title": "Video Course 3. Name tag",
+      "creationDate": 1586964634000,
+      "duration": 78,
+      "description": "Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college's classes. They're published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.",
+      "topRated": false
+    },
+    {
+      "id": 222,
+      "title": "Video Course 3.",
+      "creationDate": 1878823834000,
+      "duration": 87,
+      "description": "Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or college's classes. They're published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.",
+      "topRated": false
+    }
+  ]
+}

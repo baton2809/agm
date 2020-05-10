@@ -25,7 +25,6 @@ export class CourseComponent implements OnInit, OnChanges,
     //   const id = +this.route.snapshot.paramMap.get('id');
     //   this.course = this.service.getCourseById(id)
     // }
-
     console.log('Child onInit');
   }
 

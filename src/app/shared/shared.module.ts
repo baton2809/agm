@@ -11,12 +11,14 @@ import { TimePrettyPipe } from './pipes/time-pretty.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptor/token.interceptor';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
   ],
   declarations: [
     BreadcrumbsComponent,
@@ -33,6 +35,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   exports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
     BreadcrumbsComponent,
     FooterComponent,
     HeaderComponent,
@@ -42,6 +45,14 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     TimePrettyPipe,
     OrderByPipe,
     SearchPipe,
+    NotFoundComponent,
+  ],
+  providers: [
+    {
+      useClass: TokenInterceptor,
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+    }
   ]
 })
 export class SharedModule { }

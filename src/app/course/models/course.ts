@@ -18,14 +18,14 @@ export class AngularCourse implements Course {
     constructor(
         id: number,
         title: string,
-        creationDate: Date,
+        creationDate: number,
         duration: number,
         description: string,
         topRated: boolean) {
 
         this.id = id;
         this.title = title;
-        this.creationDate = creationDate;
+        this.creationDate = new Date(creationDate);
         this.duration = duration;
         this.description = description;
         this.topRated = topRated;
