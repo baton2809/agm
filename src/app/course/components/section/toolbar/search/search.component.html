@@ -1,4 +1,5 @@
 <div>
-    <input [(ngModel)]="text2search">
-    <button class="Mask" (click)="onSearchCourse()">Search</button>
+    <input (keyup)="searchSubj$.next($event.target.value)">
+    <!--<input [(ngModel)]="textFragment" (keyup)='searchSubj$.next($event.target.value)'>-->
+    <!--<button class="Mask" (click)="onSearchCourse()">Search</button>-->
 </div>

@@ -13,12 +13,17 @@ import { SearchPipe } from './pipes/search.pipe';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/token.interceptor';
+import { LoaderComponent } from './components/loader/loader.component';
+import { LoaderInterceptor } from './interceptor/loader.interceptor';
+import { LoaderService } from './services/loader.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     BreadcrumbsComponent,
@@ -31,6 +36,7 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
     OrderByPipe,
     SearchPipe,
     NotFoundComponent,
+    LoaderComponent,
   ],
   exports: [
     CommonModule,
@@ -46,11 +52,18 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
     OrderByPipe,
     SearchPipe,
     NotFoundComponent,
+    LoaderComponent
   ],
   providers: [
     {
       useClass: TokenInterceptor,
       provide: HTTP_INTERCEPTORS,
+      multi: true,
+    },
+    LoaderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
       multi: true,
     }
   ]
