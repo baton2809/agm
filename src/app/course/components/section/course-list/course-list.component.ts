@@ -78,9 +78,10 @@ export class CourseListComponent implements OnInit, OnChanges,
     this.onClose();
   }
 
-  onSearchCourses(textFragment: string) {
-    if (textFragment) {
-      this.courseService.getCoursesByFragment(textFragment);
-    }
+  onSearchCourses(event) {
+    this.courses = event;
+    // if (textFragment) {
+    //   this.courseService.getCoursesByFragment(textFragment);
+    // }
   }
 }
