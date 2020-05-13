@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "agm"
+  "defaultProject": "agm",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
