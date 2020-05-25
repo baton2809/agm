@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NG_VALIDATORS } from '@angular/forms';
 import { PopupComponent } from './components/popup/popup.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -17,6 +17,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderInterceptor } from './interceptor/loader.interceptor';
 import { LoaderService } from './services/loader.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CourseDurationInputValidatorDirective } from './directives/course-duration-input-validator.directive';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     SearchPipe,
     NotFoundComponent,
     LoaderComponent,
+    CourseDurationInputValidatorDirective,
   ],
   exports: [
     CommonModule,
@@ -65,6 +67,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true,
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: CourseDurationInputValidatorDirective,
+      multi: true
     }
   ]
 })
