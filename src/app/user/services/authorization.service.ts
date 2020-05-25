@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { CourseState } from 'src/app/store';
+import { Observable } from 'rxjs';
+import * as Actions from '../../store/actions/login.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
 
-  constructor(private router: Router) {
+  login$: Observable<object>;
+
+  constructor(private router: Router, private store: Store<CourseState>) {
+    console.log('we have a store ', this.store);
   }
 
   // login(mail: string, password: string) {
@@ -21,12 +27,11 @@ export class AuthorizationService {
   // }
 
   login(token: object) {
-    localStorage.setItem('fakeToken', JSON.stringify(token));
-    // this.router.navigate(['courses']);
+    this.store.dispatch(Actions.login({ token }));
   }
 
   logout() {
-    localStorage.removeItem('fakeToken');
+    this.store.dispatch(Actions.logout());
     this.router.navigate(['login']);
   }
 

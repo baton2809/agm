@@ -1,7 +1,7 @@
 <app-breadcrumbs></app-breadcrumbs>
 <div class="content">
     <div class="Rectangle">
-        <p class="New-course">Update course</p>
+        <!-- <p class="New-course"></p>
         <div class="row">
             <div class="Tag-it-component">Title</div>
             <div class="required">*required</div>
@@ -21,7 +21,61 @@
             <div class="Tag-it-component">Date</div>
             <div class="required">*required</div>
         </div>
-        <input type="text" class="input-duration" [(ngModel)]="date" placeholder="dd/MM/yyyy">
+        <input type="text" class="input-duration" [(ngModel)]="date" placeholder="dd/MM/yyyy"> -->
+
+        <form [formGroup]="form">
+            <p class="New-course">Update course</p>
+
+            <div class="row">
+                <div class="Tag-it-component">Title</div>
+                <div class="required">*required</div>
+            </div>
+            <input type="text" class="input-title" formControlName="title" placeholder="Text-input">
+                <div *ngIf="title.errors?.required" class="error">
+                    <div>Title is required.</div>
+                </div>
+                <div *ngIf="title.errors?.maxlength" class="error">
+                    Title must be less than 50 characters.
+                </div>
+
+            <div class="row">
+                <div class="Tag-it-component">Description</div>
+                <div class="required">*required</div>
+            </div>
+            <input type="text" class="input-description" formControlName="description" placeholder="Add description">
+                <div *ngIf="description.errors?.required" class="error">
+                    <div>Description is required.</div>
+                </div>
+                <div *ngIf="description.errors?.maxlength" class="error">
+                    Description must be less than 500 characters.
+                </div>
+
+            <div class="row-duration">
+                <div class="Tag-it-component">Duration</div>
+                <div class="required">*required</div>
+            </div>
+            <input type="text" class="input-duration" formControlName="duration" placeholder="minutes">
+                <div *ngIf="duration.errors?.nan" class="error">
+                    <div>Duration is required.</div>
+                </div>
+                <div *ngIf="duration.errors?.invalid" class="error">
+                    <div>Only numbers less 200 or greater than 1 required.</div>
+                </div>
+
+            <div class="row-duration">
+                <div class="Tag-it-component">Date</div>
+                <div class="required">*required</div>
+            </div>
+            <input type="text" class="input-duration" formControlName="date" placeholder="dd/MM/yyyy">
+                <div *ngIf="date.errors?.required" class="error">
+                    <div>Date is required.</div>
+                </div>
+                <div *ngIf="date.invalid" class="error">
+                    <div>Only dd/mm/yyyy format is required.</div>
+                </div>
+        </form> 
+
+
         <div class="row-author">
             <div class="Tag-it-component">Authors</div>
             <div class="required">*required</div>

@@ -9,12 +9,15 @@ import { SearchComponent } from './components/section/toolbar/search/search.comp
 import { AddCourseComponent } from './components/section/add-course/add-course.component';
 import { UserModule } from '../user/user.module';
 import { UpdateCourseComponent } from './components/section/update-course/update-course.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   imports: [
     SharedModule,
     UserModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     SectionComponent,

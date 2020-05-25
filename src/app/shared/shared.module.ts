@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NG_VALIDATORS } from '@angular/forms';
 import { PopupComponent } from './components/popup/popup.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -13,12 +13,18 @@ import { SearchPipe } from './pipes/search.pipe';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/token.interceptor';
+import { LoaderComponent } from './components/loader/loader.component';
+import { LoaderInterceptor } from './interceptor/loader.interceptor';
+import { LoaderService } from './services/loader.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CourseDurationInputValidatorDirective } from './directives/course-duration-input-validator.directive';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     BreadcrumbsComponent,
@@ -31,6 +37,8 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
     OrderByPipe,
     SearchPipe,
     NotFoundComponent,
+    LoaderComponent,
+    CourseDurationInputValidatorDirective,
   ],
   exports: [
     CommonModule,
@@ -46,12 +54,24 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
     OrderByPipe,
     SearchPipe,
     NotFoundComponent,
+    LoaderComponent
   ],
   providers: [
     {
       useClass: TokenInterceptor,
       provide: HTTP_INTERCEPTORS,
       multi: true,
+    },
+    LoaderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: CourseDurationInputValidatorDirective,
+      multi: true
     }
   ]
 })

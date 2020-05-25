@@ -16,9 +16,8 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onFindCourses(text2search: string) {
-    console.log('>> ' + text2search);
-    this.searchCourses.emit(text2search);
+  onFindCourses(event) {
+    this.searchCourses.emit(event);
   }
 
   addCourse() {
